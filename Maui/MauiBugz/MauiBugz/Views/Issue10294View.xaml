@@ -13,5 +13,8 @@
         <Button
             Text="Navigate Forward"
             Command="{Binding ForwardCommand, Mode=OneTime}"/>
+        <Button
+            Text="Run GC"
+            Command="{Binding RunGcCommand, Mode=OneTime}"/>
     </VerticalStackLayout>
 </ContentPage>

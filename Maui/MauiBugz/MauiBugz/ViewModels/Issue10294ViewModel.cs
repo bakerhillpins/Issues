@@ -1,4 +1,5 @@
-﻿using MauiBugz.Views;
+﻿using MauiBugz.Data;
+using MauiBugz.Views;
 using System.Diagnostics;
 using System.Windows.Input;
 
@@ -13,6 +14,8 @@ namespace MauiBugz.ViewModels
             this.BackCommand = new Command(this.OnBackPressed);
 
             this.ForwardCommand = new Command(this.OnForwardPressed);
+
+            this.RunGcCommand = new Command(this.OnRunGc);
 
             this.Depth = 0;
         }
@@ -35,6 +38,14 @@ namespace MauiBugz.ViewModels
 
         public ICommand ForwardCommand { get; }
 
+        public ICommand RunGcCommand { get; }
+
+        private void OnRunGc()
+        {
+            GC.Collect();
+            GC.WaitForPendingFinalizers();
+        }
+
         private async void OnBackPressed()
         {
             await Shell.Current.GoToAsync("..",
@@ -50,7 +61,7 @@ namespace MauiBugz.ViewModels
                 nameof(Issue10294View),
                 new Dictionary<string, object>
                 {
-                    { nameof(Issue10294ViewModel.Depth), this.Depth + 1 },
+                    { nameof(Issue10294ViewModel.Depth), new BigBlobOfData() { Id = this.Depth + 1 } },
                 });
         }
 
@@ -63,7 +74,7 @@ namespace MauiBugz.ViewModels
             {
                 if (query.TryGetValue(nameof(Issue10294ViewModel.Depth), out object val))
                 {
-                    this.Depth = (int)val;
+                    this.Depth = val is BigBlobOfData d ? d.Id : throw new InvalidCastException();
                 }
 
                 foreach (KeyValuePair<string, object> keyValuePair in query)
