@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MauiBugz.Views.Issue10294View"
+             Title="{Binding Title, Mode=OneWay}">
+
+    <Shell.BackButtonBehavior>
+        <BackButtonBehavior
+            Command="{Binding BackCommand, Mode=OneTime}"/>
+    </Shell.BackButtonBehavior>
+
+    <VerticalStackLayout>
+        <Button
+            Text="Navigate Forward"
+            Command="{Binding ForwardCommand, Mode=OneTime}"/>
+    </VerticalStackLayout>
+</ContentPage>
