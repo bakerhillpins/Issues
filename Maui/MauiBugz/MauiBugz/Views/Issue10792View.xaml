@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:MauiBugz.Converters"
+             x:Class="MauiBugz.Views.Issue10792View"
+             Title="Issue1234View">
+    <VerticalStackLayout Padding="10"
+                         Spacing="10">
+        <Label Text="Bindings applied directly to Label.Text property."
+               FontSize="Large"/>
+        <VerticalStackLayout>
+            <Label
+                Text="Markup Binding Directly to Text Property"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Label
+                Text="{Binding Property1, Mode=OneTime}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+        
+        <VerticalStackLayout>
+            <Label
+                Text="Object Binding Directly to Text Property"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Label
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <Label.Text>
+                    <Binding Path="Property1" Mode="OneTime" />
+                </Label.Text>
+            </Label>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label
+                Text="Multi Binding Directly to Text Property"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Label
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <Label.Text>
+                    <MultiBinding Converter="{x:Static converters:MultiBindingPassThroughConverter.Instance}"
+                                  FallbackValue="FallbackValue"
+                                  TargetNullValue="TargetNullValue">
+                        <Binding Path="Property1" Mode="OneTime" />
+                        <Binding Path="Property2" Mode="OneTime" />
+                    </MultiBinding>
+                </Label.Text>
+            </Label>
+        </VerticalStackLayout>
+
+        <Label Text="Bindings applied to Label.BindingContext property."
+               FontSize="Large" />
+        <VerticalStackLayout>
+            <Label
+                Text="Markup Binding to BindingContext Property"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Label
+                Text="{Binding Mode=OneTime}"
+                BindingContext="{Binding Property1, Mode=OneTime}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label
+                Text="Object Binding to BindingContext Property"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Label
+                Text="{Binding Mode=OneTime}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <Label.BindingContext>
+                    <Binding Path="Property1" Mode="OneTime" />
+                </Label.BindingContext>
+            </Label>
+        </VerticalStackLayout>
+
+        <VerticalStackLayout>
+            <Label
+                Text="Multi Binding to BindingContext Property"
+                VerticalOptions="Center"
+                HorizontalOptions="Center" />
+            <Label
+                Text="{Binding Mode=OneTime}"
+                VerticalOptions="Center"
+                HorizontalOptions="Center">
+                <Label.BindingContext>
+                    <MultiBinding Converter="{x:Static converters:MultiBindingPassThroughConverter.Instance}"
+                                  FallbackValue="FallbackValue"
+                                  TargetNullValue="TargetNullValue">
+                        <Binding Path="Property1" Mode="OneTime" />
+                        <Binding Path="Property2" Mode="OneTime" />
+                    </MultiBinding>
+                </Label.BindingContext>
+            </Label>
+        </VerticalStackLayout>
+
+    </VerticalStackLayout>
+</ContentPage>

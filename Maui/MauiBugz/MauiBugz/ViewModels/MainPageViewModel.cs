@@ -1,4 +1,4 @@
-using System.Collections.ObjectModel;
+﻿using System.Collections.ObjectModel;
 using System.Windows.Input;
 
 namespace MauiBugz.ViewModels
@@ -8,6 +8,7 @@ namespace MauiBugz.ViewModels
         private readonly IEnumerable<Issue> _issues = 
             new ObservableCollection<Issue>()
             {
+                new Issue() { Name = "Issue 10792" }
             };
 
         public MainPageViewModel()
