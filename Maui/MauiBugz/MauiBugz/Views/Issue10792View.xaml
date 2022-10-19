@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:MauiBugz.Converters"
              x:Class="MauiBugz.Views.Issue10792View"
-             Title="Issue1234View">
+             Title="Issue10792View">
     <VerticalStackLayout Padding="10"
                          Spacing="10">
         <Label Text="Bindings applied directly to Label.Text property."
