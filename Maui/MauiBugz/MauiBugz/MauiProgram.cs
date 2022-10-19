@@ -32,4 +32,19 @@ public static class MauiProgram
 
         return builder;
     }
+
+    public static MauiAppBuilder Issue<TView,TViewModel>( this MauiAppBuilder builder )
+        where TView : VisualElement
+        where TViewModel : ViewModelBase
+    {
+        Routing.RegisterRoute( typeof(TView).Name, typeof(TView) );
+
+        return builder
+            .RegisterServices(
+                services =>
+                {
+                    services.AddTransient<TView>()
+                            .AddTransient<TViewModel>();
+                } );
+    }
 }

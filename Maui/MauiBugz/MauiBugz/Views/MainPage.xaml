@@ -1,9 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:MauiBugz.Converters"
+             xmlns:viewModels="clr-namespace:MauiBugz.ViewModels"
              x:Class="MauiBugz.Views.MainPage">
 
-    <ScrollView>
+    <ScrollView
+        x:DataType="viewModels:MainPageViewModel">
+
         <VerticalStackLayout
             Spacing="25"
             Padding="30,0"
@@ -21,12 +25,23 @@
                 FontSize="32"
                 HorizontalOptions="Center" />
 
-            <Button
-                Text="Issue 10294"
-                SemanticProperties.Hint="Counts the number of times you click"
-                Command="{Binding BugCommand, Mode=OneTime}"
-                CommandParameter="Issue10294"
-                HorizontalOptions="Center" />
+            <CollectionView
+                ItemsSource="{Binding Issues, Mode=OneTime}">
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <ContentView
+                            x:DataType="viewModels:Issue">
+                            <Button
+                                Text="{Binding Name}"
+                                Command="{Binding BindingContext.BugCommand, Mode=OneTime, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                                CommandParameter="{Binding Name, Mode=OneTime, Converter={x:Static converters:RemoveSpacesConverter.Instance} }"
+                                HorizontalOptions="Center" />
+                        </ContentView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+            </CollectionView>
 
         </VerticalStackLayout>
     </ScrollView>
