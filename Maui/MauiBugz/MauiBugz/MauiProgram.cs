@@ -20,7 +20,8 @@ public static class MauiProgram
                    {
                        services.AddTransient<MainPage>();
                        services.AddTransient<MainPageViewModel>();
-                   });
+                   })
+            .Issue<Issue10806View, Issue10806ViewModel>();
 
 		return builder.Build();
 	}

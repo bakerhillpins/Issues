@@ -8,6 +8,7 @@ namespace MauiBugz.ViewModels
         private readonly IEnumerable<Issue> _issues = 
             new ObservableCollection<Issue>()
             {
+                new Issue() { Name = "Issue 10806" }
             };
 
         public MainPageViewModel()

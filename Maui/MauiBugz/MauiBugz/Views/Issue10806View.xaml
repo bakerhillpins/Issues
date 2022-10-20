@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:converters="clr-namespace:MauiBugz.Converters"
+             BindingContext="{Binding Property, Mode=OneTime, Converter={x:Static converters:CountingConverter.Instance}, ConverterParameter='TopOfPage'}"
+             x:Class="MauiBugz.Views.Issue10806View"
+             Title="Issue10806View">
+
+    <VerticalStackLayout>
+
+        <ContentView
+            BindingContext="{Binding Property, Mode=OneTime, Converter={x:Static converters:CountingConverter.Instance}, ConverterParameter='OneLevelDown'}"/>
+
+        <ContentView
+            BindingContext="{Binding Property, Mode=OneTime, Converter={x:Static converters:CountingConverter.Instance}, ConverterParameter='CustomContent'}"/>
+
+    </VerticalStackLayout>
+    
+</ContentPage>
