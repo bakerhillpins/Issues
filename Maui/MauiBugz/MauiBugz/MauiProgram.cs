@@ -1,3 +1,4 @@
+using MauiBugz.Models;
 using MauiBugz.ViewModels;
 using MauiBugz.Views;
 
@@ -20,7 +21,8 @@ public static class MauiProgram
                    {
                        services.AddTransient<MainPage>();
                        services.AddTransient<MainPageViewModel>();
-                   });
+                   })
+            .Issue<IssueXxxView, IssueXxxViewModel>();
 
 		return builder.Build();
 	}
@@ -38,6 +40,10 @@ public static class MauiProgram
         where TViewModel : ViewModelBase
     {
         Routing.RegisterRoute( typeof(TView).Name, typeof(TView) );
+
+        string issueNumber = typeof(TView).Name.Replace( "Issue", "" ).Replace( "View", "" );
+
+        MainPageViewModel.IssuesCollection.Add( new Issue() { Name = $"Issue {issueNumber}" } );
 
         return builder
             .RegisterServices(

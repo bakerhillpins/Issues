@@ -1,11 +1,12 @@
 using System.Collections.ObjectModel;
 using System.Windows.Input;
+using MauiBugz.Models;
 
 namespace MauiBugz.ViewModels
 {
     public class MainPageViewModel : ViewModelBase
     {
-        private readonly IEnumerable<Issue> _issues = 
+        public static readonly IList<Issue> IssuesCollection = 
             new ObservableCollection<Issue>()
             {
             };
@@ -19,17 +20,12 @@ namespace MauiBugz.ViewModels
 
         public IEnumerable<Issue> Issues
         {
-            get { return this._issues; }
+            get { return IssuesCollection; }
         }
 
         private async void OnBugPressed( object nameOfView )
         {
             await Shell.Current.GoToAsync( $"{nameOfView}View" );
         }
-    }
-
-    public class Issue
-    {
-        public string Name { get; init; }
     }
 }

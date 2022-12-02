@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:converters="clr-namespace:MauiBugz.Converters"
              xmlns:viewModels="clr-namespace:MauiBugz.ViewModels"
+             xmlns:models="clr-namespace:MauiBugz.Models"
              x:Class="MauiBugz.Views.MainPage">
 
     <ScrollView
@@ -31,12 +32,14 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <ContentView
-                            x:DataType="viewModels:Issue">
-                            <Button
-                                Text="{Binding Name}"
-                                Command="{Binding BindingContext.BugCommand, Mode=OneTime, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
-                                CommandParameter="{Binding Name, Mode=OneTime, Converter={x:Static converters:RemoveSpacesConverter.Instance} }"
-                                HorizontalOptions="Center" />
+                            x:DataType="models:Issue">
+                            <Grid>
+                                <Button
+                                    Text="{Binding Name}"
+                                    Command="{Binding BindingContext.BugCommand, Mode=OneTime, Source={RelativeSource AncestorType={x:Type CollectionView}}}"
+                                    CommandParameter="{Binding Name, Mode=OneTime, Converter={x:Static converters:RemoveSpacesConverter.Instance} }"
+                                    HorizontalOptions="Center" />
+                            </Grid>
                         </ContentView>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
