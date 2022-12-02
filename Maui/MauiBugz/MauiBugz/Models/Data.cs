@@ -3,42 +3,43 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MauiBugz.ViewModels;
 
-namespace MauiBugz.ViewModels
+namespace MauiBugz.Models
 {
     public class Data
     {
         private readonly char _id;
         private object _data;
 
-        public Data( char id )
+        public Data(char id)
         {
-            this._id = id;
+            _id = id;
         }
 
         public char Id
         {
-            get { return this._id; }
+            get { return _id; }
         }
 
         public object Property
         {
             get
             {
-                Console.WriteLine( $"{this} Get Property" );
+                Console.WriteLine($"{this} Get Property");
 
-                return this._data ??= new Data( Issue10806ViewModel.NextChar );
+                return _data ??= new Data(Issue10806ViewModel.NextChar);
             }
         }
 
-#region Overrides of Object
+        #region Overrides of Object
 
         /// <inheritdoc />
         public override string ToString()
         {
-            return $"{nameof(Data)}_{this._id}";
+            return $"{nameof(Data)}_{_id}";
         }
 
-#endregion
+        #endregion
     }
 }

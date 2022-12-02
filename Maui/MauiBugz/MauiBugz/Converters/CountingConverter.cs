@@ -1,5 +1,5 @@
 ﻿using System.Globalization;
-using MauiBugz.ViewModels;
+using MauiBugz.Models;
 
 namespace MauiBugz.Converters
 {

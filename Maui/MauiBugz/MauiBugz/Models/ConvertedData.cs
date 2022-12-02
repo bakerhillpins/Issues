@@ -3,37 +3,38 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using MauiBugz.ViewModels;
 
-namespace MauiBugz.ViewModels
+namespace MauiBugz.Models
 {
     public class ConvertedData
     {
         private readonly char _id;
         private object _data;
 
-        public ConvertedData( Data data )
+        public ConvertedData(Data data)
         {
-            this._id = data.Id;
+            _id = data.Id;
         }
 
         public object Property
         {
             get
             {
-                Console.WriteLine( $"{this} Get Property" );
+                Console.WriteLine($"{this} Get Property");
 
-                return this._data ??= new Data( Issue10806ViewModel.NextChar );
+                return _data ??= new Data(Issue10806ViewModel.NextChar);
             }
         }
 
-#region Overrides of Object
+        #region Overrides of Object
 
         /// <inheritdoc />
         public override string ToString()
         {
-            return $"{nameof(ConvertedData)}_{this._id}";
+            return $"{nameof(ConvertedData)}_{_id}";
         }
 
-#endregion
+        #endregion
     }
 }

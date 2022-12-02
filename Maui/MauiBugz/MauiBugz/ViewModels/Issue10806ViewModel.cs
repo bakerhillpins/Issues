@@ -1,4 +1,6 @@
-﻿namespace MauiBugz.ViewModels
+﻿using MauiBugz.Models;
+
+namespace MauiBugz.ViewModels
 {
     public class Issue10806ViewModel : ViewModelBase, IQueryAttributable
     {
