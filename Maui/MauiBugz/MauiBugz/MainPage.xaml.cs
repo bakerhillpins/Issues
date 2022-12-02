@@ -1,5 +1,9 @@
 ﻿namespace MauiBugz;
 
+/// <summary>
+/// Uncomment the property to workaround #11833
+/// </summary>
+//[XamlCompilation(XamlCompilationOptions.Skip)]
 public partial class MainPage : ContentPage
 {
 	int count = 0;
