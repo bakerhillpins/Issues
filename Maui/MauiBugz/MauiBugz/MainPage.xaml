@@ -13,7 +13,16 @@
                 Source="dotnet_bot.png"
                 SemanticProperties.Description="Cute dot net bot waving hi to you!"
                 HeightRequest="200"
-                HorizontalOptions="Center" />
+                HorizontalOptions="Center">
+                <!-- Compile error without workaround -->
+                <Image.AnchorX>
+                    <Binding Path="Foo" TargetNullValue="{x:Static Binding.DoNothing}"/>
+                </Image.AnchorX>
+                <!-- Same namespace but it compiles just fine. -->
+                <Image.BackgroundColor>
+                    <Binding Path="Foo" TargetNullValue="{x:Static Application.AccentColor}"/>
+                </Image.BackgroundColor>
+            </Image>
 
             <Label
                 Text="Hello, World!"
