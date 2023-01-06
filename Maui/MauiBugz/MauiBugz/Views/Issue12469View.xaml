@@ -33,7 +33,7 @@
             Grid.Row="0"
             Text="{Binding RefreshText, Mode=OneWay}"/>
 
-        <RefreshView  
+        <!--<RefreshView  
             Grid.Row="1"
             IsRefreshing="{Binding IsRefreshing, Mode=TwoWay}"
             Command="{Binding RefreshCommand}">
@@ -49,9 +49,9 @@
                         BindableLayout.ItemTemplate="{StaticResource ColorItemTemplate}" />
                 </ScrollView>
             </VerticalStackLayout>
-        </RefreshView>
+        </RefreshView>-->
 
-        <!--<RefreshView  
+        <RefreshView  
             Grid.Row="1"
             IsRefreshing="{Binding IsRefreshing, Mode=OneWay}"
             Command="{Binding RefreshCommand}">
@@ -67,6 +67,6 @@
                         BindableLayout.ItemTemplate="{StaticResource ColorItemTemplate}" />
                 </ScrollView>
             </VerticalStackLayout>
-        </RefreshView>-->
+        </RefreshView>
     </Grid>
 </ContentPage>
