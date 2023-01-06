@@ -6,6 +6,8 @@ public partial class Issue10806View : ContentPage
 {
 	public Issue10806View( Issue10806ViewModel vm )
 	{
+        //this.BindingContext = vm;
+		
 		InitializeComponent();
 
 		this.BindingContext = vm;

@@ -7,6 +7,9 @@
              Title="Issue10806View">
 
     <VerticalStackLayout>
+    <!--<VerticalStackLayout
+        BindingContext="{Binding Property, Mode=OneTime, Converter={x:Static converters:CountingConverter.Instance}, ConverterParameter='TopOfPage'}"
+    >-->
 
         <ContentView
             BindingContext="{Binding Property, Mode=OneTime, Converter={x:Static converters:CountingConverter.Instance}, ConverterParameter='OneLevelDown'}"/>

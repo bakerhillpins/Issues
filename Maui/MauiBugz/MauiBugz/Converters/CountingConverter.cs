@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Diagnostics;
+using System.Globalization;
 using MauiBugz.Models;
 
 namespace MauiBugz.Converters
@@ -23,7 +24,7 @@ namespace MauiBugz.Converters
         {
             this._count++;
 
-            Console.WriteLine( $"{parameter as string} converter has been executed {this._count} times. Value: {value ?? "null"}");
+            Debug.WriteLine( $"{parameter as string} converter has been executed {this._count} times. Value: {value ?? "null"}");
 
             return new ConvertedData( value as Data);
         }

@@ -1,4 +1,5 @@
-﻿using MauiBugz.Models;
+﻿using System.Diagnostics;
+using MauiBugz.Models;
 
 namespace MauiBugz.ViewModels
 {
@@ -29,7 +30,7 @@ namespace MauiBugz.ViewModels
         {
             get
             {
-                Console.WriteLine( $"{this} Get Property" );
+                Debug.WriteLine( $"{this} Get Property" );
 
                 return this._data ??= new Data( Issue10806ViewModel.NextChar );
             }

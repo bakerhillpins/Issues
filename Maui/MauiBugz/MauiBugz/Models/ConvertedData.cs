@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -21,7 +22,7 @@ namespace MauiBugz.Models
         {
             get
             {
-                Console.WriteLine($"{this} Get Property");
+                Debug.WriteLine($"{this} Get Property");
 
                 return _data ??= new Data(Issue10806ViewModel.NextChar);
             }
