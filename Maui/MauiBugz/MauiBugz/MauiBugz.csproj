@@ -48,4 +48,10 @@
 		<MauiAsset Include="Resources\Raw\**" LogicalName="%(RecursiveDir)%(Filename)%(Extension)" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Compile Update="Views\Issue12469View.xaml.cs">
+	    <DependentUpon>Issue12469View.xaml</DependentUpon>
+	  </Compile>
+	</ItemGroup>
+
 </Project>

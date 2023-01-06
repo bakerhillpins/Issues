@@ -2,9 +2,9 @@ using MauiBugz.ViewModels;
 
 namespace MauiBugz.Views;
 
-public partial class IssueXxxView : ContentPage
+public partial class Issue12469View : ContentPage
 {
-	public IssueXxxView( IssueXxxViewModel vm )
+	public Issue12469View( Issue12469ViewModel vm )
 	{
 		InitializeComponent();
 
